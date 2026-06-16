@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { GoldParticles } from './gold-particles'
 import { whatsappLink } from '@/lib/site'
-
+import { Calendar, MessageCircle } from 'lucide-react'
 
 
 const easeOut = [0.22, 1, 0.36, 1] as const
