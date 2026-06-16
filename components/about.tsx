@@ -42,7 +42,7 @@ export function About() {
         >
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-primary/20">
             <Image
-              src="/images/tatiana-about.png"
+              src="/images/tatiana-about.jpg"
               alt="Dra. Tatiana Andrade em seu escritório"
               fill
               sizes="(min-width: 1024px) 32rem, 100vw"

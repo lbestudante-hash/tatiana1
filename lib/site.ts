@@ -2,8 +2,8 @@ export const site = {
   name: 'Dra. Tatiana Andrade',
   shortName: 'Tatiana Andrade',
   email: 'tatianaandrade.adv@gmail.com',
-  phoneDisplay: '(21) 98155-6534',
-  phoneRaw: '5521981556534',
+  phoneDisplay: '(21) 98054-9402',
+  phoneRaw: '5521980549402',
   whatsappMessage:
     'Olá, Dra. Tatiana! Gostaria de agendar uma consulta jurídica.',
 }
