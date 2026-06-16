@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { GoldParticles } from './gold-particles'
 import { whatsappLink } from '@/lib/site'
+import { Calendar, MessageCircle } from 'lucide-react'
 
 
 
