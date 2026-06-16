@@ -17,7 +17,9 @@ const fields = [
 
 export function Contact() {
   const [errors, setErrors] = useState<Errors>({})
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
+    'idle',
+  )
 
   function validate(data: FormData): Errors {
     const next: Errors = {}
@@ -36,7 +38,7 @@ export function Contact() {
     return next
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const data = new FormData(form)
@@ -45,10 +47,24 @@ export function Contact() {
     if (Object.keys(found).length > 0) return
 
     setStatus('sending')
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: String(data.get('name') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+          phone: String(data.get('phone') || '').trim(),
+          subject: String(data.get('subject') || '').trim(),
+          message: String(data.get('message') || '').trim(),
+        }),
+      })
+      if (!res.ok) throw new Error('Request failed')
       setStatus('sent')
       form.reset()
-    }, 1200)
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -174,16 +190,26 @@ export function Contact() {
               <Loader2 className="size-4 animate-spin" />
             )}
             {status === 'sent' && <Check className="size-4" />}
-            {status === 'idle' && <Send className="size-4" />}
+            {(status === 'idle' || status === 'error') && (
+              <Send className="size-4" />
+            )}
             {status === 'sending'
               ? 'Enviando...'
               : status === 'sent'
                 ? 'Mensagem enviada!'
-                : 'Enviar mensagem'}
+                : status === 'error'
+                  ? 'Tentar novamente'
+                  : 'Enviar mensagem'}
           </button>
           {status === 'sent' && (
             <p className="mt-3 text-center text-sm text-primary">
               Obrigado pelo contato. Retornaremos em breve.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="mt-3 text-center text-sm text-destructive">
+              Não foi possível enviar a mensagem. Tente novamente ou use o
+              WhatsApp.
             </p>
           )}
         </motion.form>
