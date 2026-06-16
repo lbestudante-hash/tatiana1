@@ -24,10 +24,6 @@ export function Hero() {
       </div>
       <GoldParticles />
 
-      {/* 3D scale */}
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-full opacity-70 lg:w-[55%] lg:opacity-100">
-        <JusticeScale />
-      </div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 pt-28 pb-20 lg:grid-cols-2 lg:px-10">
         <div className="max-w-2xl">
