@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { motion } from 'motion/react'
-import { Calendar, MessageCircle, ChevronDown } from 'lucide-react'
 import { GoldParticles } from './gold-particles'
 import { whatsappLink } from '@/lib/site'
 
