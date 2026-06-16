@@ -17,7 +17,7 @@ export function FinalCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-3xl leading-tight text-balance text-foreground sm:text-4xl lg:text-5xl"
+          className="font-serif text-3xl leading-tight text-balance text-cream sm:text-4xl lg:text-5xl"
         >
           Proteja seus direitos com quem entende a importância de cada decisão.
         </motion.h2>
@@ -26,7 +26,7 @@ export function FinalCta() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-cream/75 sm:text-lg"
         >
           Receba orientação jurídica especializada e soluções estratégicas para
           seus desafios.
@@ -49,7 +49,7 @@ export function FinalCta() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 px-8 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/30 px-8 py-3.5 text-sm font-semibold text-cream transition-all duration-300 hover:border-primary hover:text-primary"
           >
             <MessageCircle className="size-4" />
             WhatsApp
