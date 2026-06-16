@@ -1,43 +1,44 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'motion/react'
-import { ArrowUpRight } from 'lucide-react'
-import { Reveal } from './reveal'
+import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import { posts } from '@/lib/blog'
 
-export function Blog() {
+export const metadata: Metadata = {
+  title: 'Blog Jurídico | Dra. Tatiana Andrade',
+  description:
+    'Artigos e conteúdos jurídicos sobre direito trabalhista, inventário, aposentadoria e mais, com a Dra. Tatiana Andrade.',
+}
+
+export default function BlogPage() {
   return (
-    <section id="blog" className="relative py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <div className="max-w-2xl">
-            <Reveal>
-              <span className="text-xs uppercase tracking-[0.32em] text-primary">
-                Blog Jurídico
-              </span>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="mt-4 font-serif text-3xl leading-tight text-balance text-foreground sm:text-4xl lg:text-5xl">
-                Conhecimento que gera segurança
-              </h2>
-            </Reveal>
-          </div>
+    <main className="min-h-screen bg-background">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+        <Link
+          href="/#blog"
+          className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        >
+          <ArrowLeft className="size-4" />
+          Voltar para a página inicial
+        </Link>
+
+        <div className="mt-10 max-w-2xl">
+          <span className="text-xs uppercase tracking-[0.32em] text-primary">
+            Blog Jurídico
+          </span>
+          <h1 className="mt-4 font-serif text-4xl leading-tight text-balance text-foreground lg:text-5xl">
+            Conhecimento que gera segurança
+          </h1>
+          <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+            Conteúdos práticos para ajudar você a entender seus direitos e tomar
+            decisões com mais segurança jurídica.
+          </p>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {posts.map((post, i) => (
-            <motion.article
-              key={post.title}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{
-                duration: 0.7,
-                delay: i * 0.1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+          {posts.map((post) => (
+            <article
+              key={post.slug}
               className="group overflow-hidden rounded-2xl border border-border/60 bg-card/40 transition-colors duration-300 hover:border-primary/50"
             >
               <Link href={`/blog/${post.slug}`} className="block">
@@ -57,9 +58,9 @@ export function Blog() {
                   <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                     {post.date}
                   </p>
-                  <h3 className="mt-3 font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-primary">
+                  <h2 className="mt-3 font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-primary">
                     {post.title}
-                  </h3>
+                  </h2>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {post.excerpt}
                   </p>
@@ -69,10 +70,10 @@ export function Blog() {
                   </span>
                 </div>
               </Link>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>
-    </section>
+    </main>
   )
 }

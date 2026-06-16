@@ -107,7 +107,7 @@ export function Hero() {
         >
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-primary/20">
             <Image
-              src="/images/tatiana-hero.png"
+              src="/images/tatiana-hero.jpg"
               alt="Dra. Tatiana Andrade, advogada"
               fill
               priority
